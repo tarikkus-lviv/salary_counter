@@ -30,6 +30,7 @@ workers = (name, date, whole, salary, month_salary, margin)
 mycursor.execute(sqlWorker, workers)
 
 
+# just to make a commit
 
 
 
