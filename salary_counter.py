@@ -10,10 +10,11 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-sqlWorker = "INSERT INTO workers (name, date, whole, salary, month_salary, margin) VALUES (%s,%s, %s, %s, %s, %s)"
+sqlWorker = "INSERT INTO workers (name, date, whole, salary, margin) VALUES (%s,%s, %s, %s, %s)"
 
 name = input("Name: ")
-date = datetime.datetime.today()
+date = input("When did you work? ")
+# date = datetime.datetime.today()
 whole = int(input("How much did you make today?: "))
 salary = int(whole * 0.4)
 
@@ -24,17 +25,21 @@ def sal():
 
 margin = int(whole * 0.6)
 
-workers = (name, date, whole, salary, month_salary, margin)
+workers = (name, date, whole, salary, margin)
 
 
 mycursor.execute(sqlWorker, workers)
 
 
-# just to make a commit
 
 
 
+How can i count salary bu mounths?
 
+1. Create a dict with id for every month.
+2. Throw a for on dates column in MySql and split every date to extract month and find its key in the dict.
+. Throw for on dates column in MySql and while month == key in dict add all salary to the   
+.
 
 # розрахунок оксаниної зарплати
 
