@@ -10,7 +10,7 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-sqlWorker = "INSERT INTO workers (name, date, whole, salary, margin) VALUES (%s,%s, %s, %s, %s)"
+sqlWorker = "INSERT INTO workers (name, date, whole, salary, margin) VALUES (%s,%s, %s, %s, %s); SELECT * FROM workers ORDER BY name"
 
 name = input("Name: ")
 date = input("When did you work? ")
@@ -22,24 +22,49 @@ def sal():
     for month_salary in range(1,30):
         month_salary += salary
         return month_salary
+        print(month_salary)
 
 margin = int(whole * 0.6)
 
 workers = (name, date, whole, salary, margin)
 
+# sqlDate = "SELECT * FROM workers ORDER BY name"
 
 mycursor.execute(sqlWorker, workers)
 
 
+# mycursor.execute(sqlDate)
+myresult = mycursor.fetchmany()
+
+for r in myresult:
+    print(r)
 
 
 
-How can i count salary bu mounths?
 
-1. Create a dict with id for every month.
-2. Throw a for on dates column in MySql and split every date to extract month and find its key in the dict.
-. Throw for on dates column in MySql and while month == key in dict add all salary to the   
-.
+
+
+
+
+
+# How can i count salary bu mounths?
+#
+# 1. Create a dict with id for every month.
+# 2. Throw a for on dates column in MySql and split every date to extract month and find its key in the dict.
+# 3. Throw for on dates column in MySql and while month == key in dict add all salary together
+#
+#
+#
+# SELECT MONTH(date)
+#
+# curmonth = 0
+# wage = 0
+# for month in sql date:
+#     curmonth = MONTH
+#         while MONTH == curmonth:
+#             wage += salary
+
+
 
 # розрахунок оксаниної зарплати
 
